@@ -147,7 +147,7 @@ def main():
     if not st.session_state.get("logged_in"):
         login()
     else:
-        # Display main content if logged in
+        # Display main content if logged in is true
         main_content()
 
 

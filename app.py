@@ -68,8 +68,12 @@ def handle_userinput(user_question):
 
 # Function to check user credentials
 def authenticate(username, password):
-    valid_username = os.environ.get("ST_USERNAME")
-    valid_password = os.environ.get("ST_PASSWORD")
+    # dev
+    # valid_username = os.environ.get("ST_USERNAME")
+    # valid_password = os.environ.get("ST_PASSWORD")
+    # deploy
+    valid_username = st.secrets["ST_USERNAME"]
+    valid_password = st.secrets["ST_PASSWORD"]
 
     # Check if valid_username and valid_password are not None before comparison
     if valid_username is not None and valid_password is not None:
@@ -135,7 +139,7 @@ def main_content():
 # Main app logic
 def main():
     load_dotenv()
-    st.set_page_config(page_title="Document Detective", page_icon=":male-detective:")
+    st.set_page_config(page_title="Document Detective", page_icon=":mag:")
 
     # Check if logged in
     if not st.session_state.get("logged_in"):

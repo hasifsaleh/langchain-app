@@ -114,14 +114,14 @@ def main_content():
         st.session_state.chat_history = None
 
     st.header("Document Detective :male-detective:")
-    user_question = st.text_input("Ask a question about your documents")
+    user_question = st.text_input("Ask a question about your document(s)")
     if user_question:
         handle_userinput(user_question)
 
     with st.sidebar:
-        st.subheader("Your documents")
+        st.subheader("Your document(s)")
         pdf_docs = st.file_uploader(
-            "Upload your PDFs here and click on 'Process'", accept_multiple_files=True
+            "Upload your PDF(s) here and click on 'Process'", accept_multiple_files=True
         )
         if st.button("Process"):
             with st.spinner("Processing"):

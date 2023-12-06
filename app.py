@@ -1,6 +1,7 @@
 import streamlit as st
 import os
 from dotenv import load_dotenv
+import toml
 from PyPDF2 import PdfReader
 from langchain.text_splitter import CharacterTextSplitter
 from langchain.embeddings import OpenAIEmbeddings, HuggingFaceInstructEmbeddings
@@ -31,7 +32,7 @@ def get_text_chunks(raw_text):
 
 
 def get_vectorstore(text_chunks):
-    embeddings = OpenAIEmbeddings()
+    embeddings = OpenAIEmbeddings(open_api_key=st.secrets("OPEN_API_KEY"))
     # embeddings = HuggingFaceInstructEmbeddings(model_name="hkunlp/instructor-xl")
     vectorstore = FAISS.from_texts(texts=text_chunks, embedding=embeddings)
     return vectorstore
@@ -138,7 +139,7 @@ def main_content():
 
 # Main app logic
 def main():
-    load_dotenv()
+    # load_dotenv()
     st.set_page_config(page_title="Document Detective", page_icon=":mag:")
 
     # Check if logged in

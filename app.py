@@ -66,52 +66,10 @@ def handle_userinput(user_question):
             )
 
 
-# def main():
-#     load_dotenv()
-#     st.set_page_config(page_title="Chat with multiple PDFs", page_icon=":books:")
-#     login()
-
-#     st.write(css, unsafe_allow_html=True)
-
-#     if "conversation" not in st.session_state:
-#         st.session_state.conversation = None
-
-#     if "chat_history" not in st.session_state:
-#         st.session_state.chat_history = None
-
-#     st.header("Chat with multiple PDFs :books:")
-#     user_question = st.text_input("Ask a question about your documents")
-#     if user_question:
-#         handle_userinput(user_question)
-
-#     with st.sidebar:
-#         st.subheader("Your documents")
-#         pdf_docs = st.file_uploader(
-#             "Upload your PDFs here and click on 'Process'", accept_multiple_files=True
-#         )
-#         if st.button("Process"):
-#             with st.spinner("Processing"):
-#                 # get pdf text
-#                 raw_text = get_pdf_text(pdf_docs)
-
-#                 # get the text chunks
-#                 text_chunks = get_text_chunks(raw_text)
-
-#                 # create vector store
-#                 vectorstore = get_vectorstore(text_chunks)
-#                 st.success("Processing Completed")
-
-#                 # create conversation chain
-#                 st.session_state.conversation = get_conversation_chain(vectorstore)
-
-
 # Function to check user credentials
 def authenticate(username, password):
     valid_username = os.environ.get("ST_USERNAME")
     valid_password = os.environ.get("ST_PASSWORD")
-    # Checking
-    # st.write(valid_username)
-    # st.write(valid_password)
 
     # Check if valid_username and valid_password are not None before comparison
     if valid_username is not None and valid_password is not None:
